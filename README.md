@@ -8,18 +8,21 @@
 _Replace anything surrounded by the `< >` symbols._
 
 ## SUMMARY:
- < Provide a short description of your program's functionality. No more than a couple sentences. >
+ Draws a dart board and throws darts at it (green dot if in the circle, red dot if not).
+ Simulates a game of darts between 2 players, keeping track of score and printing winner, if there is one.
+ Estimates value of PI using dartboard and many accurately thrown darts.
 
 ## GRACE DAYS
-Grace days used for this assignment: < # >
+Grace days used for this assignment: 0
 
-Grace days remaining: < # >/5
+Grace days remaining: 5/5
 
 ## KNOWN BUGS AND INCOMPLETE PARTS:
- < What parts of the project you were not able to complete >
+ None
 
 ## REFERENCES:
- < List any outside resources used >
+ https://docs.python.org/3/library/turtle.html
+ https://docs.python.org/3.7/library/random.html
 
 ## MISCELLANEOUS COMMENTS:
- < Anything you would like the grader to know >
+ None
