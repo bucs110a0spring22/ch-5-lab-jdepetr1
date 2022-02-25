@@ -32,11 +32,26 @@ import time
 #                   Your Code Goes Below                #
 #########################################################
 def gotoOrigin(myturtle = None):
+  '''
+  Moves the turtle to the origin of the screen (0,0)
+  myturtle: (Turtle) turtle object
+  
+  return: None
+  '''
   myturtle.up()
   myturtle.goto(0,0)
   myturtle.down()
   
 def drawSquare(myturtle = None, width = 0, top_left_x = 0, top_left_y = 0):
+  '''
+  Draws a square starting from (top_left_x,top_left_y) with side lengths of (width)
+  myturtle: (Turtle) turtle object
+  width: (int) length of each side of desired square
+  top_left_x: (int) x position of top left corner of desired square
+  top_left_y: (int) y position of top left corner of desired square
+  
+  return: None
+  '''
   myturtle.up()
   myturtle.setx(top_left_x)
   myturtle.sety(top_left_y)
@@ -48,14 +63,35 @@ def drawSquare(myturtle = None, width = 0, top_left_x = 0, top_left_y = 0):
 
   gotoOrigin(myturtle)
 
+
+
 def drawLine(myturtle = None, x_start = 0, y_start = 0, x_end = 0, y_end = 0):
+  '''
+  Draws a line using turtle object
+  myturtle: (Turtle) turtle object
+  x_start: (int) x position of where the desired line begins
+  y_start: (int) y position of where the desired line begins
+  x_end: (int) x position of where the desired line ends
+  y_end: (int) y position of where the desired line ends
+  
+  return: None
+  '''
   myturtle.up()
   myturtle.goto(x_start, y_start)
   myturtle.down()
   myturtle.goto(x_end, y_end)
   gotoOrigin(myturtle)
 
+
+
 def drawCircle(myturtle = None, radius = 0):
+  '''
+  Draws a circle using turtle object centered at the origin (0,0)
+  myturtle: (Turtle) turtle object
+  radius: (int) radius of desired circle
+
+  return: None
+  '''
   myturtle.up()
   gotoOrigin(myturtle)
   turtle_pos = myturtle.pos()
@@ -63,19 +99,48 @@ def drawCircle(myturtle = None, radius = 0):
   myturtle.down()
   myturtle.circle(radius, 360, 30)
 
+
+
 def setUpDartboard(myscreen = None, myturtle = None):
+  '''
+  Sets turtle screen window region. Draws a square (2x2), unit circle, and the grid axes within this  region.
+  myscreen: (Screen) turtle screen object
+  myturtle: (Turtle) turtle object
+
+  return: None
+  '''
   myscreen.setworldcoordinates(-1, -1, 1, 1)
   drawSquare(myturtle, 2, -1, 1)
   drawLine(myturtle, -1,0, 1,0)
   drawLine(myturtle, 0,1, 0,-1)
   drawCircle(myturtle, 1)
 
+
+
 def isInCircle(myturtle = None, circle_center_x = 0, circle_center_y = 0, radius = 0):
+  '''
+  Determines if thrown dart lands on dartboard (in circle(green)) or the wooden square behind it (not in circle(red))  and visualizes the dart
+  myturtle: (Turtle) turtle object
+  circle_center_x: (int) x position of the center of the circle
+  circle_center_y: (int) y position of the center of the circle
+  radius: (int) radius of the circle in question
+
+  return: (Bool) Whether the thrown dart is in the circle (True) or outside of the circle (False)
+  '''
   if myturtle.distance(0,0) <= radius:
     return True
   return False
+
+
   
 def throwDart(myturtle = None):
+  '''
+  Simulates the throwing of a dart onto dartboard and puts a dot where it "lands"
+  Chooses a random location within the square for the dart to land
+  myturtle: (Turtle) turtle object
+
+  return: None
+  '''
   myturtle.up()
   random_x = random.uniform(-1,1)
   random_y = random.uniform(-1,1)
@@ -86,7 +151,15 @@ def throwDart(myturtle = None):
   else:
     myturtle.dot(5,"red")
 
+
+
 def playDarts(myturtle = None):
+  '''
+  Simulates 2 players throwing 10 darts each (alternating) and keeps score of how many each player throws within the circle. Prints the scores of each player and who won, if anybody.
+  myturtle: (Turtle) turtle object
+
+  return: [(int), (int)] A list containing Player 1's score and Player 2's score, in that order
+  '''
   player1_score = 0
   player2_score = 0
 
@@ -108,7 +181,16 @@ def playDarts(myturtle = None):
     
   return [player1_score, player2_score]
 
+
+
 def montePi(myturtle = None, num_darts = 0):
+  '''
+  Approximates the value of PI by throwing darts at a dartboard and seeing multiplying the ratio of how many darts land in the circle to total number of darts thrown by 4.
+  myturtle: (Turtle) turtle object
+  num_darts: (int) total nuber of darts thrown
+
+  return: (float) approximation of the value of PI
+  '''
   inside_count = 0
 
   for i in range(num_darts):
